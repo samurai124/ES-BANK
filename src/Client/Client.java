@@ -16,6 +16,10 @@ public class Client extends Person {
         this.numeroClient = numeroClient;
     }
 
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
     public int getIdClient() {
         return idClient;
     }
@@ -34,5 +38,8 @@ public class Client extends Person {
 
     public void ajouterCompte(Account account){
         accounts.add(account);
+    }
+    public void supprimerCompte(Account account){
+        accounts.remove(account);
     }
 }
