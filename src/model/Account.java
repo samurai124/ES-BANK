@@ -1,6 +1,4 @@
-package Account;
-
-import Client.Client;
+package model;
 
 public class Account {
     static int nexId = 1;

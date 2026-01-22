@@ -1,6 +1,4 @@
-package Client;
-import Account.Account;
-import Person.Person;
+package model;
 import java.util.ArrayList;
 
 public class Client extends Person {

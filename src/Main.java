@@ -1,4 +1,4 @@
-import Bank.Bank;
+import service.Bank;
 
 class Main{
     static public  void main(){

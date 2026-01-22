@@ -1,6 +1,4 @@
-package Account;
-
-import Client.Client;
+package model;
 
 public class SavingAccount extends Account{
     private float tauxInteret;
@@ -15,6 +13,11 @@ public class SavingAccount extends Account{
 
     public void setTauxInteret(float tauxInteret) {
         this.tauxInteret = tauxInteret;
+    }
+
+    public void calculerInter(){
+
+
     }
 
 

@@ -1,14 +1,14 @@
-package Bank;
+package service;
 
 import java.util.*;
+
+import model.Account;
+import model.Client;
+import model.SavingAccount;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
-import Account.Account;
-import Client.Client;
-import Account.SavingAccount;
 
 public class Bank {
 
@@ -614,8 +614,93 @@ public class Bank {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         System.out.println("Export Excel terminé avec succès !");
+    }
+    public void transfererMontant() {
+        System.out.println("_______________________________________________________________________\n____________________________ Transférer ____________________________\n_______________________________________________________________________");
+        // requperer le compte source
+        int numeroCompte = 0;
+        do {
+            System.out.print("Veuillez entrer le numero du compte  source : ");
+            String numeroCompteSourceString = input.nextLine();
+            if (numeroCompteSourceString.isEmpty()) {
+                System.out.println("Veuillez entrer un numero !!!!");
+                numeroCompte = 0;
+
+            }else {
+                try {
+                    numeroCompte = Integer.parseInt(numeroCompteSourceString);
+                }catch (NumberFormatException e) {
+                    System.out.println("Veuillez entrer un numero valide !!!!");
+                    numeroCompte = 0;
+                }
+            }
+        }while (numeroCompte == 0);
+        Account cs = null;
+        for (Account a : accounts) {
+            if (a.getNumeroCompte() == numeroCompte) {
+                cs = a;
+            }
+        }
+        if (cs == null) {
+            System.out.println("Compte n'existe pas !!!!");
+            return;
+        }
+        if (cs.getSolde() == 0) {
+            System.out.println("Solde suffisant !!!!");
+            return;
+        }
+        // recuperer le montant
+        float montantAtrensferer = 0;
+        do {
+            System.out.print("Veuillez entrer la montant  : ");
+            try {
+                montantAtrensferer = Float.parseFloat(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un montant valide !!!!");
+                montantAtrensferer = 0;
+            }
+            if(montantAtrensferer < 0){
+                System.out.println("Veuillez entrer un montant valide !!!!");
+                montantAtrensferer = 0;
+            }
+        }while (montantAtrensferer == 0);
+        // verifier le solde du compte source
+        if (cs.getSolde() == 0) {
+            System.out.println("Solde insuffisant !!!!");
+            return;
+        }
+        if (cs.getSolde() - montantAtrensferer < 0) {
+            System.out.println("Solde insuffisant !!!!");
+            return;
+        }
+        // recuperer le compte destination
+        Account cd = null;
+        int numeroCompted = 0;
+        do {
+            System.out.print("Veuillez entrer le numero du compte destination : ");
+            try {
+                numeroCompted = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un numero valide !!!!");
+                numeroCompted = 0;
+            }
+        }while (numeroCompted == 0);
+        for(Account a : accounts){
+            if (a.getNumeroCompte() == numeroCompted) {
+                cd = a;
+            }
+        }
+        if (cd == null) {
+            System.out.println("Compte n'existe pas !!!!");
+            return;
+        }
+        // transeferer le montant
+        cd.deposer(montantAtrensferer);
+        cs.retirer(montantAtrensferer);
+
+        System.out.println("le montant ");
+
     }
 
     public void EbankApp(){
@@ -637,7 +722,6 @@ public class Bank {
                 case 11 : System.out.println("____________________________E-bank____________________________");break;
                 default : System.out.println("Invalide choix !!!!!");break;
             }
-
         }while (choix != 11);
     }
 }
