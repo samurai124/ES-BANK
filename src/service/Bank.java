@@ -565,7 +565,7 @@ public class Bank {
     // menu
     public int menu() {
         System.out.println("_______________________________________________________________________\n____________________________E-bank menu____________________________\n_______________________________________________________________________");
-        System.out.println("1 ==> Afficher les comptes\n2 ==> AFficher les clients\n3 ==> Ajouter un client\n4 ==> Créer un compte bancaire\n5 ==> Consulter le solde\n6 ==> Déposer de l’argent\n7 ==> Retirer de l’argent\n8 ==> Supprimer un compte\n9 ==> Supprimer un client\n10 ==> Export les comptes sous form exel \n11 ==> quitter l'app");
+        System.out.println("1 ==> Afficher les comptes\n2 ==> AFficher les clients\n3 ==> Ajouter un client\n4 ==> Créer un compte bancaire\n5 ==> Consulter le solde\n6 ==> Déposer de l’argent\n7 ==> Retirer de l’argent\n8 ==> Supprimer un compte\n9 ==> Supprimer un client\n10 ==> Export les comptes sous form exel\n11 ==> transféré un  montant\n12 ==> quitter l'app");
         System.out.print("Veuillez entrer  votre choix : ");
         String choix = input.nextLine();
         int choice = 0 ;
@@ -699,7 +699,7 @@ public class Bank {
         cd.deposer(montantAtrensferer);
         cs.retirer(montantAtrensferer);
 
-        System.out.println("le montant ");
+        System.out.println("Le montant est transfere avec succes");
 
     }
 
@@ -719,10 +719,11 @@ public class Bank {
                 case 8 : supprimerCompte();break;
                 case 9 : supprimerClient();break;
                 case 10 : exportExcel();break;
-                case 11 : System.out.println("____________________________E-bank____________________________");break;
+                case 11: transfererMontant();break;
+                case 12 : System.out.println("____________________________E-bank____________________________");break;
                 default : System.out.println("Invalide choix !!!!!");break;
             }
-        }while (choix != 11);
+        }while (choix != 12);
     }
 }
 
