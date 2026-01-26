@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="curvesapi-1.07">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.3-20220909/poi-bin-5.2.3/ooxml-lib/curvesapi-1.07.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/curvesapi-1.07.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

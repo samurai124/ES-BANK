@@ -603,7 +603,7 @@ public class Bank {
             row.createCell(3).setCellValue(a.getSolde());
         }
 
-        try (FileOutputStream fos = new FileOutputStream("C:\\Users\\hamza2004\\Bureau\\comptes.xlsx")) {
+        try (FileOutputStream fos = new FileOutputStream("C:\\Users\\Pc\\Desktop\\comptes.xlsx")) {
             workbook.write(fos);
         } catch (IOException e) {
             e.printStackTrace();
@@ -618,6 +618,9 @@ public class Bank {
     }
     public void transfererMontant() {
         System.out.println("_______________________________________________________________________\n____________________________ Transférer ____________________________\n_______________________________________________________________________");
+        for (Account a : accounts) {
+            System.out.printf("Numero compte : %d | Proprietaire : %s %s\n", a.getNumeroCompte(), a.getClient().getNom(), a.getClient().getPrenom());
+        }
         // requperer le compte source
         int numeroCompte = 0;
         do {
